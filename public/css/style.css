@@ -243,16 +243,19 @@ main {
     border-radius: 8px;
     background: #f5ead2;
     box-shadow: 0 15px 28px rgb(6 29 22 / 25%);
+    transform: translateY(var(--float-y, 0px)) rotate(var(--card-rotation, 0deg));
+    will-change: transform;
 }
 
 .card-one {
+    --card-rotation: -11deg;
     z-index: 1;
     top: 31%;
     left: 7%;
-    transform: rotate(-11deg);
 }
 
 .card-seven {
+    --card-rotation: 0deg;
     z-index: 2;
     top: 21%;
     left: 34%;
@@ -262,7 +265,7 @@ main {
     z-index: 1;
     top: 27%;
     right: 7%;
-    transform: rotate(11deg);
+    --card-rotation: 11deg;
 }
 
 .art-stamp {
