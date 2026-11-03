@@ -6,7 +6,7 @@
     <title>Sobremesa</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:wght@700&family=Pixelify+Sans:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -46,6 +46,131 @@
                 <img class="hero-card card-seven" src="../src/img/cards/sobremesa-oros-07.jpg" alt="7 de oros" fetchpriority="high">
                 <img class="hero-card card-three" src="../src/img/cards/sobremesa-copas-03.jpg" alt="3 de copas" fetchpriority="high">
                 <span class="art-stamp"><strong>¡CLARO QUE QUIERO!</strong></span>
+            </div>
+        </section>
+
+        <section class="rules-section" id="reglas" aria-labelledby="rules-title">
+            <div class="rules-heading">
+                <p class="eyebrow">PARA SENTARSE A JUGAR</p>
+                <h2 id="rules-title">Las reglas</h2>
+            </div>
+
+            <div class="rules-window" role="region" aria-label="Reglamento completo: siete capítulos" tabindex="0">
+                <div class="rules-list">
+                    <article class="rule-chapter rule-deck" id="regla-mazo">
+                        <span class="rule-number" aria-hidden="true">01</span>
+                        <div class="rule-content">
+                            <h3>El mazo</h3>
+                            <p>Se juega con 40 cartas españolas: se quitan los 8 y los 9. Cada carta tiene una fuerza; la más alta gana la vuelta.</p>
+                            <p class="rule-detail">Las cuatro bravas, de mayor a menor, son:</p>
+                            <div class="bravas-row" aria-label="Orden de las cuatro cartas más altas">
+                                <figure class="brava-card">
+                                    <img src="../src/img/cards/sobremesa-espadas-01.jpg" alt="1 de espadas">
+                                    <figcaption>1 de espadas</figcaption>
+                                </figure>
+                                <span class="card-order" aria-hidden="true">›</span>
+                                <figure class="brava-card">
+                                    <img src="../src/img/cards/sobremesa-bastos-01.jpg" alt="1 de bastos">
+                                    <figcaption>1 de bastos</figcaption>
+                                </figure>
+                                <span class="card-order" aria-hidden="true">›</span>
+                                <figure class="brava-card">
+                                    <img src="../src/img/cards/sobremesa-espadas-07.jpg" alt="7 de espadas">
+                                    <figcaption>7 de espadas</figcaption>
+                                </figure>
+                                <span class="card-order" aria-hidden="true">›</span>
+                                <figure class="brava-card">
+                                    <img src="../src/img/cards/sobremesa-oros-07.jpg" alt="7 de oros">
+                                    <figcaption>7 de oros</figcaption>
+                                </figure>
+                            </div>
+                            <p>Después siguen: 3, 2, 1 de oros o copas, 12, 11, 10, 7 de bastos o copas, 6, 5 y 4. Las cartas del mismo rango empatan.</p>
+                        </div>
+                    </article>
+
+                    <article class="rule-chapter" id="regla-mano">
+                        <span class="rule-number" aria-hidden="true">02</span>
+                        <div class="rule-content">
+                            <h3>Tres cartas. Dos vueltas. Treinta tantos.</h3>
+                            <p>Cada jugador recibe tres cartas y la mano se juega en hasta tres vueltas. Quien está de mano juega primero y, en caso de empate en el envido, también tiene prioridad.</p>
+                            <ul>
+                                <li>En cada vuelta se juega una carta. Gana la carta de mayor fuerza.</li>
+                                <li>Quien gana una vuelta sale primero en la siguiente; si empatan, conserva la salida quien la tenía.</li>
+                                <li>La mano se gana al llevarse dos de las tres vueltas.</li>
+                            </ul>
+                            <p>La partida va a 30 puntos: los primeros 15 son malas y los últimos 15, buenas. Sin apuestas cantadas, ganar la mano suma 1 punto. Los puntos del envido y del truco se cuentan por separado.</p>
+                        </div>
+                    </article>
+
+                    <article class="rule-chapter" id="regla-parda">
+                        <span class="rule-number" aria-hidden="true">03</span>
+                        <div class="rule-content">
+                            <h3>Si hay parda, no se arma lío</h3>
+                            <p>Una parda es un empate de cartas en una vuelta. Para saber quién gana la mano, se resuelve así:</p>
+                            <ul>
+                                <li>Si empatan la primera, define la segunda; si también empatan, define la tercera.</li>
+                                <li>Si un jugador gana la primera y empatan la segunda, ese jugador gana la mano.</li>
+                                <li>Si cada uno ganó una vuelta y empatan la tercera, gana quien ganó la primera.</li>
+                                <li>Si las tres vueltas quedan pardas, gana quien está de mano.</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="rule-chapter" id="regla-truco">
+                        <span class="rule-number" aria-hidden="true">04</span>
+                        <div class="rule-content">
+                            <h3>Truco, retruco y vale cuatro</h3>
+                            <p>El truco es una apuesta sobre quién se lleva la mano. Se puede subir en cadena; cada jugador debe responder a la apuesta vigente.</p>
+                            <div class="score-grid" aria-label="Puntos de las apuestas de truco">
+                                <div><span>Sin cantar</span><strong>1 punto</strong></div>
+                                <div><span>Truco querido</span><strong>2 puntos</strong></div>
+                                <div><span>Retruco querido</span><strong>3 puntos</strong></div>
+                                <div><span>Vale cuatro querido</span><strong>4 puntos</strong></div>
+                            </div>
+                            <p>Decir «quiero» acepta la apuesta; «no quiero» la rechaza. Si se rechaza, el rival cobra el valor anterior: 1 por no querer el truco, 2 por no querer el retruco y 3 por no querer el vale cuatro. Irse al mazo entrega la mano al rival por el valor vigente.</p>
+                        </div>
+                    </article>
+
+                    <article class="rule-chapter" id="regla-envido">
+                        <span class="rule-number" aria-hidden="true">05</span>
+                        <div class="rule-content">
+                            <h3>El envido: los tantos van por otro lado</h3>
+                            <p>El envido compara los tantos de las cartas. Se puede cantar en la primera vuelta, antes de jugar la primera carta propia.</p>
+                            <ul>
+                                <li>Dos cartas del mismo palo: sumá sus valores y agregá 20. Las figuras (10, 11 y 12) valen cero.</li>
+                                <li>Tres cartas del mismo palo: para esta mesa, contá la mejor pareja.</li>
+                                <li>Si no tenés dos del mismo palo, cuenta el valor más alto de una carta.</li>
+                                <li>Si hay empate en tantos, gana quien está de mano.</li>
+                            </ul>
+                            <div class="score-grid envido-grid" aria-label="Puntos de las apuestas de envido aceptadas">
+                                <div><span>Envido</span><strong>2 puntos</strong></div>
+                                <div><span>Real envido</span><strong>3 puntos</strong></div>
+                                <div><span>Envido + envido</span><strong>4 puntos</strong></div>
+                                <div><span>Envido + real envido</span><strong>5 puntos</strong></div>
+                                <div><span>Envido + envido + real envido</span><strong>7 puntos</strong></div>
+                            </div>
+                            <p>Una apuesta simple rechazada da 1 punto. Si se rechaza una subida, se cobran las apuestas anteriores de la cadena. La falta envido vale lo necesario para llegar a 15 si ambos están en malas, o a 30 cuando alguno ya está en buenas. Si se canta junto con el truco, primero se resuelve el envido. Los tantos declarados se comprueban con las cartas.</p>
+                        </div>
+                    </article>
+
+                    <article class="rule-chapter" id="regla-flor">
+                        <span class="rule-number" aria-hidden="true">06</span>
+                        <div class="rule-content">
+                            <h3>Sin flor, sin vueltas.</h3>
+                            <p>Esta mesa juega sin flor. Tener tres cartas del mismo palo no suma una apuesta extra: para el envido se usa la mejor pareja de ese palo.</p>
+                            <p>La flor es una variante opcional que se acuerda antes de empezar. En las reglas que la incluyen, tres cartas del mismo palo forman flor y pueden abrir una apuesta aparte; esa variante no se usa acá.</p>
+                        </div>
+                    </article>
+
+                    <article class="rule-chapter" id="regla-picardia">
+                        <span class="rule-number" aria-hidden="true">07</span>
+                        <div class="rule-content">
+                            <h3>La picardía también juega</h3>
+                            <p>Se puede mentir al cantar el truco o los tantos: el rival decide si quiere la apuesta sin conocer tus cartas. Si acepta el envido, los tantos declarados se comprueban al mostrarlas.</p>
+                            <p>En esta partida mano a mano no hay señas de pareja. No necesitás una cuenta para jugar contra la máquina. El mate lo ponés vos; la próxima mano, también.</p>
+                        </div>
+                    </article>
+                </div>
             </div>
         </section>
     </main>
