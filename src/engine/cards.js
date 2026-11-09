@@ -4,11 +4,9 @@ const valores = [1,2,3,4,5,6,7,10,11,12];
 function idsDeValor(valor, palosIncluidos = palos) {
     const numero = String(valor).padStart(2, "0");
     const ids = [];
-
     for (let i = 0; i < palosIncluidos.length; i++) {
         ids.push(`${palosIncluidos[i]}-${numero}`);
     }
-
     return ids;
 }
 

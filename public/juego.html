@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#102d26">
+    <title>La mesa · Sobremesa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Pixelify+Sans:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/game.css">
+</head>
+<body class="game-page">
+    <header class="game-header">
+        <a class="brand" href="index.html">Sobremesa</a>
+        <span class="header-divider" aria-hidden="true"></span>
+        <span class="mode-label">Contra la máquina</span>
+        <span class="match-rules">MANO A MANO <b>·</b> A 30 <b>·</b> SIN FLOR</span>
+        <a class="exit-link" href="index.html"><img src="../src/img/assets/icon-logout.svg" alt="">Salir de la mesa</a>
+    </header>
+
+    <main class="game-layout">
+        <aside class="score-column" aria-label="Anotador de tantos">
+            <section class="score-card">
+                <span class="score-clip" aria-hidden="true"></span>
+                <div class="score-title"><h1>Los tantos</h1><span>A 30</span></div>
+                <div class="score-line"></div>
+                <div class="player-score">
+                    <div><h2>Vos</h2><span class="score-stage" id="you-stage">MALAS</span></div>
+                    <strong id="you-score">12</strong>
+                </div>
+                <img class="tally" id="you-tally" src="../src/img/assets/tally-you.svg" alt="Anotador con 12 tantos">
+                <div class="score-line"></div>
+                <div class="player-score">
+                    <div><h2>Carpincho</h2><span class="score-stage" id="rival-stage">MALAS</span></div>
+                    <strong id="rival-score">9</strong>
+                </div>
+                <img class="tally rival-tally" id="rival-tally" src="../src/img/assets/tally-rival.svg" alt="Anotador con 9 tantos">
+                <div class="score-foot"><span>0—15 · malas</span><span>15—30 · buenas</span></div>
+            </section>
+        </aside>
+
+        <section class="table-scene" aria-label="Mesa de truco">
+            <div class="table-topper">
+                <div class="capy-wrap" aria-hidden="true">
+                    <img class="capy-shirt" src="../src/img/assets/capy-shirt.svg" alt="">
+                    <img class="capy-head" src="../src/img/assets/capy-head.svg" alt="">
+                    <img class="capy-paw-left" src="../src/img/assets/capy-paw-left.svg" alt="">
+                    <img class="capy-paw-right" src="../src/img/assets/capy-paw-right.svg" alt="">
+                </div>
+                <div class="rival-info">
+                    <div class="rival-heading"><h2>Carpincho</h2><span>IA</span></div>
+                    <p id="rival-status">Esperando</p>
+                    <div class="rival-cards" aria-label="Tres cartas boca abajo">
+                        <img src="../src/img/assets/card-back-1.svg" alt="Carta del carpincho">
+                        <img src="../src/img/assets/card-back-2.svg" alt="Carta del carpincho">
+                        <img src="../src/img/assets/card-back-3.svg" alt="Carta del carpincho">
+                    </div>
+                </div>
+            </div>
+            <div class="table-frame" aria-hidden="true"><div class="table-felt"></div></div>
+            <div class="table-stitch" aria-hidden="true"></div>
+            <div class="hand" aria-label="Tus cartas">
+                <div class="playing-card"><img src="../src/img/cards/sobremesa-espadas-01.jpg" alt="1 de espadas"></div>
+                <div class="playing-card"><img src="../src/img/cards/sobremesa-espadas-06.jpg" alt="6 de espadas"></div>
+                <div class="playing-card"><img src="../src/img/cards/sobremesa-copas-01.jpg" alt="1 de copas"></div>
+            </div>
+            <div class="mate-set" aria-hidden="true">
+                <span class="mate-cup"><img src="../src/img/assets/mate-support.svg"><img src="../src/img/assets/mate-cup.svg"><img src="../src/img/assets/mate-rim.svg"><img src="../src/img/assets/mate-yerba.svg"><img src="../src/img/assets/mate-straw.svg"></span>
+                <span class="thermo"><img src="../src/img/assets/thermo-handle.svg"><img src="../src/img/assets/thermo-body.svg"><img src="../src/img/assets/thermo-shoulder.svg"><img src="../src/img/assets/thermo-cap.svg"><img src="../src/img/assets/thermo-sticker.svg"></span>
+            </div>
+            <p class="table-motto">El mate no se apura.</p>
+        </section>
+
+        <aside class="action-column" aria-label="Acciones de la mano">
+            <section class="turn-status">
+                <img src="../src/img/assets/turn-dot.svg" alt="">
+                <div><h1 id="turn-title">Es tu turno</h1><p id="turn-caption">Primera vuelta · sos mano</p></div>
+            </section>
+            <div class="panel-divider"></div>
+            <section class="hand-value"><span>EN JUEGO</span><strong id="hand-value">1 tanto</strong></section>
+            <div class="panel-divider"></div>
+            <section class="calls" aria-label="Cantos disponibles">
+                <p class="section-kicker">POR LOS TANTOS</p>
+                <div class="call-button call-gold"><span><strong>Envido</strong><small>Vale 2 si quiere</small></span><img src="../src/img/assets/icon-envido.svg" alt=""></div>
+                <div class="call-button call-gold"><span><strong>Real envido</strong><small>Vale 3 si quiere</small></span><img src="../src/img/assets/icon-envido.svg" alt=""></div>
+                <div class="call-button call-gold"><span><strong>Falta envido</strong><small>Por lo que falta</small></span><img src="../src/img/assets/icon-envido.svg" alt=""></div>
+                <p class="section-kicker trick-kicker">POR LA MANO</p>
+                <div class="call-button call-green"><span><strong>Truco</strong><small>Subí el valor de la mano a 2</small></span><img src="../src/img/assets/icon-truco.svg" alt=""></div>
+                <div class="call-button call-muted"><span><strong>Retruco</strong><small>Subí el valor de la mano a 3</small></span><img src="../src/img/assets/icon-disabled.svg" alt=""></div>
+                <div class="call-button call-muted"><span><strong>Vale cuatro</strong><small>Subí el valor de la mano a 4</small></span><img src="../src/img/assets/icon-disabled.svg" alt=""></div>
+            </section>
+            <div class="panel-divider bottom-divider"></div>
+            <div class="fold-button"><span><img src="../src/img/assets/icon-flag.svg" alt="">Irse al mazo</span><small>Cedés la mano · <b>1</b> tanto</small></div>
+        </aside>
+    </main>
+</body>
+</html>

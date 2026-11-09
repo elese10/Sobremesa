@@ -11,9 +11,7 @@ if (cards.length > 0 && !prefersReducedMotion.matches) {
 
             card.style.setProperty("--float-y", `${verticalPosition}px`);
         });
-
         window.requestAnimationFrame(animateCards);
     }
-
     window.requestAnimationFrame(animateCards);
 }
