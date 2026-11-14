@@ -10,7 +10,8 @@
         resolverEnvido,
         cantarEnvido,
         responderEnvido,
-        calcularPuntosEnvido
+        calcularPuntosEnvido,
+        calcularEnvido
     } = typeof require !== "undefined"
         ? require("./rules.js")
         : window.TrucoRules;
@@ -49,8 +50,12 @@
                 this.jugadores[i].cartas = mazo.splice(0, 3);
             }
             this.cartasJugadasRonda = [];
+            this.historialJugadasRonda = [];
             this.bazaActual = [];
             this.resultadosBazas = [];
+            this.trucoEnSuspenso = null;
+            this.envidoRevelado = null;
+            this.envidoRechazadoPor = null;
             this.estadoTruco = {
                 nivel: 0,
                 pendiente: false,
@@ -66,7 +71,6 @@
                 equipoQueDebeResponder: null
             };
         }
-
         //helpers//
         obtenerJugador(jugadorId) {
             return this.jugadores.find(j => j.id === jugadorId);
@@ -83,6 +87,15 @@
         obtenerEquipoMano() {
             const numeroJugador = this.jugadores[this.indiceMano].numero;
             return numeroJugador % 2 !== 0 ? "A" : "B";
+        }
+
+        obtenerCartasInicialesJugador(jugadorId) {
+            const jugador = this.obtenerJugador(jugadorId);
+            if (!jugador) return [];
+            const jugadas = this.historialJugadasRonda
+                .filter(h => h.jugadorId === jugadorId)
+                .map(h => h.carta);
+            return [...jugador.cartas, ...jugadas];
         }
 
         avanzarTurno() {
@@ -107,7 +120,6 @@
                 this.ganadorPartida = equipo;
             }
         }
-
         //jugar//
         jugarCarta(jugadorId, cartaId) {
             if (this.partidaTerminada) return { error: "La partida ya terminó" };
@@ -124,6 +136,11 @@
             }
             const [cartaJugada] = jugadorActual.cartas.splice(indiceCarta, 1);
             this.cartasJugadasRonda.push(cartaJugada);
+            this.historialJugadasRonda.push({
+                jugadorId: jugadorActual.id,
+                equipo: jugadorActual.equipo,
+                carta: cartaJugada
+            });
             this.bazaActual.push({
                 jugadorId: jugadorActual.id,
                 equipo: jugadorActual.equipo,
@@ -139,7 +156,7 @@
             this.bazaActual = [];
             const resultadoRonda = resolverRonda(this.resultadosBazas, this.obtenerEquipoMano());
             if (resultadoRonda.ganador !== null) {
-                const puntosGanados = this.estadoTruco.nivel === 0 ? 1 : this.estadoTruco.nivel;
+                const puntosGanados = this.estadoTruco.nivel + 1;
                 this.sumarPuntos(resultadoRonda.ganador, puntosGanados);
                 const ganadorRonda = resultadoRonda.ganador;
                 if (!this.partidaTerminada) {
@@ -161,7 +178,6 @@
             }
             return { ok: true, bazaTerminada: true, rondaTerminada: false };
         }
-
         //cantos de truco//
         cantarTruco(jugadorId) {
             if (this.partidaTerminada) return { error: "La partida ya terminó" };
@@ -219,6 +235,7 @@
             const resultado = cantarEnvido(this.estadoEnvido, jugador.equipo, tipoCanto);
             if (resultado.error) return resultado;
             if (esEnvidoPrimero) {
+                this.trucoEnSuspenso = { ...this.estadoTruco };
                 this.estadoTruco = {
                     nivel: 0,
                     pendiente: false,
@@ -242,8 +259,13 @@
                 return { ok: true, envidoResuelto: false, estadoEnvido: this.estadoEnvido };
             }
             if (!resultado.resolverTantos) {
+                this.envidoRechazadoPor = jugador.equipo;
                 const puntos = calcularPuntosEnvido(this.estadoEnvido.cantos, true, this.puntos, this.limitePuntos);
                 this.sumarPuntos(resultado.ganador, puntos);
+                if (!this.partidaTerminada && this.trucoEnSuspenso) {
+                    this.estadoTruco = this.trucoEnSuspenso;
+                    this.trucoEnSuspenso = null;
+                }
                 return {
                     ok: true,
                     envidoResuelto: true,
@@ -251,9 +273,27 @@
                     puntosGanados: puntos
                 };
             }
-            const { ganador, tantos } = resolverEnvido(this.jugadores, this.obtenerEquipoMano());
+
+            const jugadoresConManoCompleta = this.jugadores.map(j => ({
+                ...j,
+                cartas: this.obtenerCartasInicialesJugador(j.id)
+            }));
+            const tantosPorEquipo = {};
+            for (const j of jugadoresConManoCompleta) {
+                const pts = calcularEnvido(j.cartas);
+                if (tantosPorEquipo[j.equipo] === undefined || pts > tantosPorEquipo[j.equipo]) {
+                    tantosPorEquipo[j.equipo] = pts;
+                }
+            }
+            this.envidoRevelado = tantosPorEquipo;
+
+            const { ganador, tantos } = resolverEnvido(jugadoresConManoCompleta, this.obtenerEquipoMano());
             const puntos = calcularPuntosEnvido(this.estadoEnvido.cantos, false, this.puntos, this.limitePuntos);
             this.sumarPuntos(ganador, puntos);
+            if (!this.partidaTerminada && this.trucoEnSuspenso) {
+                this.estadoTruco = this.trucoEnSuspenso;
+                this.trucoEnSuspenso = null;
+            }
             return {
                 ok: true,
                 envidoResuelto: true,
@@ -268,7 +308,9 @@
             const jugador = this.obtenerJugador(jugadorId);
             if (!jugador) return { error: "Jugador inválido" };
             const equipoRival = jugador.equipo === "A" ? "B" : "A";
-            let puntos = this.estadoTruco.nivel === 0 ? 1 : this.estadoTruco.nivel;
+            let puntos = this.estadoTruco.pendiente
+                ? this.estadoTruco.nivel
+                : this.estadoTruco.nivel + 1;
             if (this.resultadosBazas.length === 0 && !this.estadoEnvido.jugado && !this.estadoEnvido.pendiente) {
                 puntos += 1;
             }
