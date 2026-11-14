@@ -164,3 +164,68 @@ button, a { font: inherit; }
     .call-button small { font-size: 9px; }
     .fold-button { padding-top: 2px; }
 }
+
+/* Cartas jugadas sobre el paño */
+.table-cards {
+    position: absolute;
+    z-index: 2;
+    top: 48%;
+    left: 50%;
+    display: flex;
+    gap: 18px;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+.baza-pair {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.table-card-slot {
+    width: clamp(54px, 6.2vw, 84px);
+    aspect-ratio: 2 / 3;
+    border: 1px dashed #9ba77a33;
+    border-radius: 5px;
+}
+
+.table-card-slot img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid #cbb78a;
+    border-radius: 5px;
+    box-shadow: 0 5px 8px #0005;
+}
+
+/* Interacción en mano y botones */
+.playing-card {
+    cursor: pointer;
+    transition: transform 0.16s ease, box-shadow 0.16s ease;
+}
+
+.playing-card:hover:not(:disabled) {
+    transform: translateY(-10px);
+    box-shadow: 0 14px 16px #0006;
+}
+
+.playing-card:disabled {
+    cursor: default;
+    opacity: 0.85;
+}
+
+.call-button:not(.call-muted):hover {
+    filter: brightness(1.08);
+    transform: translateY(-1px);
+}
+
+.fold-button {
+    cursor: pointer;
+}
+
+.fold-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

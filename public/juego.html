@@ -60,6 +60,8 @@
             </div>
             <div class="table-frame" aria-hidden="true"><div class="table-felt"></div></div>
             <div class="table-stitch" aria-hidden="true"></div>
+            <div class="table-cards" id="table-cards" aria-label="Cartas jugadas en la mesa"></div>
+            <p class="round-message" id="round-message" aria-live="polite"></p>
             <div class="hand" aria-label="Tus cartas">
                 <div class="playing-card"><img src="../src/img/cards/sobremesa-espadas-01.jpg" alt="1 de espadas"></div>
                 <div class="playing-card"><img src="../src/img/cards/sobremesa-espadas-06.jpg" alt="6 de espadas"></div>
@@ -91,8 +93,16 @@
                 <div class="call-button call-muted"><span><strong>Vale cuatro</strong><small>Subí el valor de la mano a 4</small></span><img src="../src/img/assets/icon-disabled.svg" alt=""></div>
             </section>
             <div class="panel-divider bottom-divider"></div>
-            <div class="fold-button"><span><img src="../src/img/assets/icon-flag.svg" alt="">Irse al mazo</span><small>Cedés la mano · <b>1</b> tanto</small></div>
+            <button type="button" class="fold-button"><span><img src="../src/img/assets/icon-flag.svg" alt="">Irse al mazo</span><small>Cedés la mano · <b>1</b> tanto</small></button>
         </aside>
     </main>
+
+    <script src="../src/engine/cards.js"></script>
+    <script src="../src/engine/rules.js"></script>
+    <script src="../src/engine/game.js"></script>
+    <script src="../src/ai/montecarlo.js"></script>
+    <script src="../src/ai/heuristics.js"></script>
+    <script src="../src/ai/bot.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
