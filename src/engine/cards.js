@@ -70,11 +70,15 @@ function obtenerFuerza(carta) {
 }
 function compararCartas(cartaA, cartaB) {
     const diferencia = obtenerFuerza(cartaA) - obtenerFuerza(cartaB);
-
     if (diferencia === 0) {
         return 0;
     }
     return diferencia > 0 ? 1 : -1;
 }
 
-module.exports = { crearMazo, mazoRandom, obtenerFuerza, compararCartas };
+module.exports = {
+    crearMazo,
+    mazoRandom,
+    obtenerFuerza,
+    compararCartas
+};

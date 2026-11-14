@@ -3,7 +3,7 @@ const {
     mazoRandom,
     obtenerFuerza,
     compararCartas
-} = require("../src/engine/cards");
+} = require("../src/engine/cards.js");
 
 function buscarCarta(mazo, palo, valor) {
     return mazo.find(carta => carta.palo === palo && carta.valor === valor);
