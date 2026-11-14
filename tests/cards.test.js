@@ -3,7 +3,7 @@ const {
     mazoRandom,
     obtenerFuerza,
     compararCartas
-} = require("../src/engine/cards");
+} = require("../src/engine/cards.js");
 
 function buscarCarta(mazo, palo, valor) {
     return mazo.find(carta => carta.palo === palo && carta.valor === valor);
@@ -11,7 +11,6 @@ function buscarCarta(mazo, palo, valor) {
 
 test("crea 40 cartas sin ochos ni nueves", () => {
     const mazo = crearMazo();
-
     expect(mazo).toHaveLength(40);
     expect(new Set(mazo.map(carta => carta.id)).size).toBe(40);
     expect(mazo.some(carta => [8, 9].includes(carta.valor))).toBe(false);

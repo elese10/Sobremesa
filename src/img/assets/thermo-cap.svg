@@ -1,0 +1,13 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="32" height="24" viewBox="0 0 32 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="stepped-cap">
+<path id="Vector" d="M6 0H26V2H30V6H32V18H30V22H26V24H6V22H2V18H0V6H2V2H6V0Z" fill="#172B22"/>
+<path id="Vector_2" d="M6 2H26V4H28V8H4V4H6V2Z" fill="#E5E2C7"/>
+<path id="Vector_3" d="M8 2H22V4H8V2Z" fill="#FAF0D3"/>
+<path id="Vector_4" d="M2 8H30V16H28V20H4V16H2V8Z" fill="#BFC3AB"/>
+<path id="Vector_5" d="M4 8H8V16H6V18H4V8Z" fill="#E5E2C7"/>
+<path id="Vector_6" d="M26 8H30V16H28V20H24V18H26V8Z" fill="#89947E"/>
+<path id="Vector_7" d="M8 12H12V14H8V12ZM16 12H20V14H16V12ZM24 12H26V14H24V12Z" fill="#737E6D"/>
+<path id="Vector_8" d="M6 20H26V22H6V20Z" fill="#526451"/>
+<path id="Vector_9" d="M8 20H18V22H8V20Z" fill="#C5A16A"/>
+</g>
+</svg>
